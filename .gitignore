@@ -39,4 +39,4 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
-/lib/secrets/secrets.dart
+/lib/secrets.dart
