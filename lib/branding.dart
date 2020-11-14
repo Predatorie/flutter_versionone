@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 
 /// a60306
-final Color mastercamRed = Color.fromRGBO(166, 3, 6, 1);
-final Color mastercamBlack = Color.fromRGBO(0, 0, 0, 1);
-final Color mastercamDarkGrey = Color.fromRGBO(34, 34, 34, 1);
-final Color mastercamGrey = Color.fromRGBO(68, 68, 68, 1);
-final Color mastercamLightGrey = Color.fromRGBO(237, 237, 237, 1);
+final Color mastercamRed = Color(0xFFD11141);
+final Color mastercamBlack = Color(0xFF000000);
+final Color mastercamBlack75 = Color(0xFF333333);
+final Color mastercamBlack50 = Color(0xFF808080);
+final Color mastercamBlack25 = Color(0xFFBFBFBF);
+
+final Color mastercamMill = Color(0xFFD11141);
+final Color mastercamLathe = Color(0xFFCAB280);
+final Color mastercamMillTurn = Color(0xFF48B4E7);
+final Color mastercamWire = Color(0xFFF89823);
+final Color mastercamRouter = Color(0xFFC2CF2F);
+final Color mastercamMFSW = Color(0xFFA370B0);
+final Color mastercamDesign = Color(0xFF4DC2BF);
