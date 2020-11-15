@@ -35,6 +35,7 @@ class PasswordEntry extends GetWidget<LoginController> {
               style: TextStyle(color: Colors.white),
               controller: controller.passwordController,
               obscureText: obscure.value,
+              focusNode: controller.passwordFocus,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               textAlign: TextAlign.center,

@@ -34,7 +34,6 @@ class UsernameEntry extends GetWidget<LoginController> {
               style: TextStyle(color: mastercamBlack25),
               controller: controller.usernameController,
               obscureText: false,
-              focusNode: controller.passwordFocus,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
               textAlign: TextAlign.center,
