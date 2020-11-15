@@ -1,17 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_versionone/branding.dart';
+import 'package:flutter_versionone/controllers/login_controller.dart';
 import 'package:get/get.dart';
 
-class PasswordEntry extends StatelessWidget {
-  final TextEditingController passwordController;
-  final Function(String) validate;
-
-  const PasswordEntry({
-    Key key,
-    @required this.passwordController,
-    @required this.validate,
-  }) : super(key: key);
-
+class PasswordEntry extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
     final obscure = true.obs;
@@ -41,12 +33,12 @@ class PasswordEntry extends StatelessWidget {
           Expanded(
             child: TextFormField(
               style: TextStyle(color: Colors.white),
-              controller: passwordController,
+              controller: controller.passwordController,
               obscureText: obscure.value,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.done,
               textAlign: TextAlign.center,
-              validator: validate,
+              validator: (s) => controller.passwordValidator(s),
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: '*********',

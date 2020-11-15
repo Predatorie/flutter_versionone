@@ -26,16 +26,9 @@ class LoginView extends GetView<LoginController> {
                 children: <Widget>[
                   LogoGraphicHeader(),
                   FormVerticalSpace(),
-                  UsernameEntry(
-                    usernameController: controller.usernameController,
-                    passwordFocus: controller.passwordFocus,
-                    validate: (value) => controller.usernameValidator(value),
-                  ),
+                  UsernameEntry(),
                   FormVerticalSpace(),
-                  PasswordEntry(
-                    passwordController: controller.passwordController,
-                    validate: (value) => controller.passwordValidator(value),
-                  ),
+                  PasswordEntry(),
                   FormVerticalSpace(
                     height: 42,
                   ),

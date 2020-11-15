@@ -1,19 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_versionone/branding.dart';
+import 'package:flutter_versionone/controllers/login_controller.dart';
+import 'package:get/get.dart';
 
-class UsernameEntry extends StatelessWidget {
-  final TextEditingController usernameController;
-  final FocusNode passwordFocus;
-  final Function(String) validate;
-
-  const UsernameEntry(
-      {Key key,
-      @required this.usernameController,
-      @required this.passwordFocus,
-      @required this.validate})
-      : super(key: key);
-
+class UsernameEntry extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -41,15 +32,15 @@ class UsernameEntry extends StatelessWidget {
           Expanded(
             child: TextFormField(
               style: TextStyle(color: mastercamBlack25),
-              controller: usernameController,
+              controller: controller.usernameController,
               obscureText: false,
-              focusNode: passwordFocus,
+              focusNode: controller.passwordFocus,
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
               textAlign: TextAlign.center,
-              validator: validate,
+              validator: (s) => controller.passwordValidator(s),
               onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(passwordFocus),
+                  FocusScope.of(context).requestFocus(controller.passwordFocus),
               decoration: InputDecoration(
                   filled: false,
                   border: InputBorder.none,
