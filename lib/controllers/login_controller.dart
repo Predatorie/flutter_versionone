@@ -10,14 +10,12 @@ class LoginController extends GetxController {
   TextEditingController usernameController;
   TextEditingController passwordController;
   FocusNode passwordFocus;
-  FocusNode buttonFocus;
 
   @override
   void onReady() {
     usernameController ??= TextEditingController();
     passwordController ??= TextEditingController();
     passwordFocus ??= FocusNode();
-    buttonFocus ??= FocusNode();
     super.onReady();
   }
 
@@ -26,7 +24,6 @@ class LoginController extends GetxController {
     usernameController?.dispose();
     passwordController?.dispose();
     passwordFocus?.dispose();
-    buttonFocus?.dispose();
     super.onClose();
   }
 

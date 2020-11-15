@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_versionone/branding.dart';
+import 'package:get/get.dart';
 
 class PasswordEntry extends StatelessWidget {
   final TextEditingController passwordController;
-  final FocusNode buttonFocus;
+  final Function(String) validate;
 
   const PasswordEntry({
     Key key,
     @required this.passwordController,
-    @required this.buttonFocus,
+    @required this.validate,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final obscure = true.obs;
+
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(left: 40.0, right: 40.0, top: 6.0),
@@ -20,9 +23,7 @@ class PasswordEntry extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-              color: Theme.of(context).primaryColorLight,
-              width: 0.5,
-              style: BorderStyle.solid),
+              color: versionOneRed, width: 0.5, style: BorderStyle.solid),
         ),
       ),
       padding: EdgeInsets.only(left: 0.0, right: 10.0),
@@ -34,24 +35,35 @@ class PasswordEntry extends StatelessWidget {
             padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 00.0),
             child: Icon(
               Icons.lock_open,
-              color: mastercamBlack25,
+              color: versionOneRed,
             ),
           ),
           Expanded(
             child: TextFormField(
-              style: TextStyle(color: mastercamBlack25),
+              style: TextStyle(color: Colors.white),
               controller: passwordController,
-              obscureText: true,
-              focusNode: buttonFocus,
+              obscureText: obscure.value,
               keyboardType: TextInputType.text,
-              textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.done,
               textAlign: TextAlign.center,
-              validator: (value) => value.isEmpty ? 'Password required' : null,
-              onFieldSubmitted: (_) =>
-                  FocusScope.of(context).requestFocus(buttonFocus),
+              validator: validate,
               decoration: InputDecoration(
                 border: InputBorder.none,
                 hintText: '*********',
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 00.0),
+            child: InkWell(
+              onTap: () {
+                obscure.toggle();
+                obscure.refresh();
+                print(obscure.value);
+              },
+              child: Icon(
+                Icons.remove_red_eye,
+                color: versionOneRed,
               ),
             ),
           ),

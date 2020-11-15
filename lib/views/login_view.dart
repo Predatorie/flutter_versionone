@@ -4,7 +4,6 @@ import 'package:flutter_versionone/controllers/login_controller.dart';
 import 'package:flutter_versionone/ui_components/form_vertical_spacing.dart';
 import 'package:flutter_versionone/ui_components/logo_graphics_header.dart';
 import 'package:flutter_versionone/ui_components/password_entry.dart';
-import 'package:flutter_versionone/ui_components/primary_button.dart';
 import 'package:flutter_versionone/ui_components/username_entry.dart';
 import 'package:get/get.dart';
 
@@ -14,7 +13,7 @@ class LoginView extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: mastercamBlack75,
+      backgroundColor: versionOneBackground,
       body: Form(
         key: _formKey,
         child: Padding(
@@ -30,27 +29,31 @@ class LoginView extends GetView<LoginController> {
                   UsernameEntry(
                     usernameController: controller.usernameController,
                     passwordFocus: controller.passwordFocus,
+                    validate: (value) => controller.usernameValidator(value),
                   ),
                   FormVerticalSpace(),
                   PasswordEntry(
-                    buttonFocus: controller.buttonFocus,
                     passwordController: controller.passwordController,
+                    validate: (value) => controller.passwordValidator(value),
                   ),
                   FormVerticalSpace(
                     height: 42,
                   ),
-                  PrimaryButton(
-                      labelText: 'Sign In',
-                      onPressed: () async {
-                        if (_formKey.currentState.validate()) {
-                          controller.signIn(context);
-                        }
-                      }),
                 ],
               ),
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: versionOneRed,
+        onPressed: () => controller.signIn(context),
+        child: Icon(
+          Icons.done,
+          size: 32,
+          color: Colors.white,
+        ),
+        splashColor: versionOneBackground,
       ),
     );
   }

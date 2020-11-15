@@ -5,11 +5,13 @@ import 'package:flutter_versionone/branding.dart';
 class UsernameEntry extends StatelessWidget {
   final TextEditingController usernameController;
   final FocusNode passwordFocus;
+  final Function(String) validate;
 
   const UsernameEntry(
       {Key key,
       @required this.usernameController,
-      @required this.passwordFocus})
+      @required this.passwordFocus,
+      @required this.validate})
       : super(key: key);
 
   @override
@@ -21,9 +23,7 @@ class UsernameEntry extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(
-              color: Theme.of(context).primaryColorLight,
-              width: 0.5,
-              style: BorderStyle.solid),
+              color: mastercamBlack25, width: 0.5, style: BorderStyle.solid),
         ),
       ),
       padding: EdgeInsets.only(left: 0.0, right: 10.0),
@@ -47,7 +47,7 @@ class UsernameEntry extends StatelessWidget {
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
               textAlign: TextAlign.center,
-              validator: (value) => value.isEmpty ? 'Username required' : null,
+              validator: validate,
               onFieldSubmitted: (_) =>
                   FocusScope.of(context).requestFocus(passwordFocus),
               decoration: InputDecoration(

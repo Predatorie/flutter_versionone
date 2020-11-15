@@ -18,8 +18,8 @@ import 'package:get/get.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  Get.put<VersionOneService>(
-      VersionOneService(dio: Dio(), storage: FlutterSecureStorage()));
+  Get.putAsync(() =>
+      VersionOneService(dio: Dio(), storage: FlutterSecureStorage()).init());
 
   /// TODO: determine if we have a stored and valid access token
   /// TODO: navigate accordingly

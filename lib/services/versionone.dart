@@ -11,8 +11,9 @@ import 'package:flutter_versionone/models/team.dart';
 import 'package:flutter_versionone/models/team_room.dart';
 import 'package:flutter_versionone/secrets.dart';
 import 'package:flutter_versionone/services/api_service.dart';
+import 'package:get/get.dart';
 
-class VersionOneService implements ApiService {
+class VersionOneService extends GetxService implements ApiService {
   final Dio dio;
   final FlutterSecureStorage storage;
 
@@ -353,5 +354,10 @@ class VersionOneService implements ApiService {
       contentType: 'json',
       responseType: ResponseType.json,
     );
+  }
+
+  Future<VersionOneService> init() async {
+    print('$runtimeType ready!');
+    return this;
   }
 }
