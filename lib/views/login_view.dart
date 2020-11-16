@@ -43,7 +43,12 @@ class LoginView extends GetView<LoginController> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: versionOneRed,
-        onPressed: () => controller.signIn(context),
+        onPressed: () async {
+          var member = await controller.signIn(context);
+          if (member.isSuccess) {
+            print('login successfull: ${member.value.email}');
+          }
+        },
         child: Icon(
           Icons.done,
           size: 32,
