@@ -42,6 +42,7 @@ class UsernameEntry extends GetWidget<LoginController> {
               decoration: InputDecoration(
                   filled: false,
                   border: InputBorder.none,
+                  hintStyle: TextStyle(color: mastercamBlack50),
                   hintText: 'Username'),
             ),
           ),

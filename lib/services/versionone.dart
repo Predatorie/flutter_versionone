@@ -32,7 +32,6 @@ class VersionOneService extends GetxService implements ApiService {
         'Basic': base64.encode(utf8.encode("$username:$password")),
         HttpHeaders.authorizationHeader: "${Secrets.versionOneApiKey}"
       },
-      contentType: 'json',
       responseType: ResponseType.json,
     );
 
@@ -351,7 +350,6 @@ class VersionOneService extends GetxService implements ApiService {
       connectTimeout: 10000,
       receiveTimeout: 100000,
       headers: {HttpHeaders.authorizationHeader: "${Secrets.versionOneApiKey}"},
-      contentType: 'json',
       responseType: ResponseType.json,
     );
   }

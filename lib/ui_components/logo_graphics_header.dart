@@ -12,18 +12,23 @@ class LogoGraphicHeader extends StatelessWidget {
     // }
     return Hero(
       tag: 'App Logo',
-      child: CircleAvatar(
-          foregroundColor: mastercamRed,
+      child: Container(
+        height: 120.0,
+        width: 120.0,
+        child: CircleAvatar(
           backgroundColor: Colors.transparent,
-          radius: 60.0,
-          child: ClipOval(
-            child: Image.asset(
-              _imageLogo,
-              fit: BoxFit.cover,
-              width: 120.0,
-              height: 120.0,
-            ),
-          )),
+          foregroundColor: Colors.transparent,
+          radius: 100.0,
+        ),
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: mastercamBlack25,
+            width: 4.0,
+          ),
+          shape: BoxShape.circle,
+          image: DecorationImage(image: AssetImage(_imageLogo)),
+        ),
+      ),
     );
   }
 }

@@ -39,6 +39,7 @@ class PasswordEntry extends GetWidget<LoginController> {
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 border: InputBorder.none,
+                hintStyle: TextStyle(color: mastercamBlack50),
                 hintText: '*********',
               ),
             ),

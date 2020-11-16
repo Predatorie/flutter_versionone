@@ -44,8 +44,8 @@ class LoginController extends GetxController {
 
     print('username: $username password: $password');
 
-    // var member =
-    //     await api.login(usernameController.text, passwordController.text);
+    var member =
+        await api.login(usernameController.text, passwordController.text);
   }
 
   /// Alert dialog shown for any missing login credentials
