@@ -5,9 +5,8 @@ class Result<T> {
   final bool success;
   final String errorMessage;
 
-  Result({
-    @required this.value,
-    @required this.success,
-    @required this.errorMessage,
-  });
+  Result(
+      {@required this.value,
+      @required this.success,
+      @required this.errorMessage});
 }

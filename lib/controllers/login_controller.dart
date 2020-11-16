@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_versionone/branding.dart';
 import 'package:flutter_versionone/models/members.dart';
 import 'package:flutter_versionone/models/result.dart';
 import 'package:flutter_versionone/services/versionone.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
+  /// resolve our version one api service
   final VersionOneService api = Get.find();
 
   TextEditingController usernameController;
@@ -54,21 +54,29 @@ class LoginController extends GetxController {
       );
     }
 
-    var member =
-        await api.login(usernameController.text, passwordController.text);
+    try {
+      var member =
+          await api.login(usernameController.text, passwordController.text);
 
-    if (member != null) {
+      if (member != null) {
+        return Result<Member>(
+          value: member,
+          success: true,
+          errorMessage: null,
+        );
+      }
+    } catch (e) {
       return Result<Member>(
-        value: member,
-        success: true,
-        errorMessage: null,
+        success: false,
+        value: null,
+        errorMessage: 'Log in failed.\n$e',
       );
     }
 
     return Result<Member>(
       success: false,
       value: null,
-      errorMessage: 'Failed to log in.\nPlease try again.',
+      errorMessage: 'Log in failed.\nPlease try again.',
     );
   }
 }
