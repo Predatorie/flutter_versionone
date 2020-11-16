@@ -46,7 +46,7 @@ class LoginView extends GetView<LoginController> {
         onPressed: () async {
           var member = await controller.signIn(context);
           if (member.success) {
-            print('login successfull: ${member.value.email}');
+            Get.offNamed('dashboard');
           } else {
             await Get.defaultDialog(
                 title: 'Sign In',

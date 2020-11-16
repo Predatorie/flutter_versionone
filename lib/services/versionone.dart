@@ -76,7 +76,7 @@ class VersionOneService extends GetxService implements ApiService {
         print(e.message);
       }
 
-      return null;
+      throw (e);
     }
 
     return null;
