@@ -8,7 +8,7 @@ class UsernameEntry extends GetWidget<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
       margin: EdgeInsets.only(left: 40.0, right: 40.0, top: 6.0),
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -37,7 +37,6 @@ class UsernameEntry extends GetWidget<LoginController> {
               keyboardType: TextInputType.text,
               textInputAction: TextInputAction.next,
               textAlign: TextAlign.center,
-              validator: (s) => controller.passwordValidator(s),
               onFieldSubmitted: (_) =>
                   FocusScope.of(context).requestFocus(controller.passwordFocus),
               decoration: InputDecoration(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_versionone/branding.dart';
 import 'package:flutter_versionone/services/versionone.dart';
 import 'package:get/get.dart';
 
@@ -32,23 +33,32 @@ class LoginController extends GetxController {
     var username = usernameController.text;
     var password = passwordController.text;
 
+    /// validating here, validation on entry field not firing as expected.
+    if (username.isEmpty) {
+      return showMessage('Username required');
+    }
+
+    if (password.isEmpty) {
+      return showMessage('Password required');
+    }
+
     print('username: $username password: $password');
 
     // var member =
     //     await api.login(usernameController.text, passwordController.text);
   }
 
-  String passwordValidator(String s) {
-    if (s.isEmpty) {
-      return 'Username required.';
-    }
-    return '';
-  }
-
-  String usernameValidator(String s) {
-    if (s.isEmpty) {
-      return 'Password required.';
-    }
-    return '';
-  }
+  /// Alert dialog shown for any missing login credentials
+  void showMessage(String text) async => await Get.defaultDialog(
+      buttonColor: versionOneRed,
+      backgroundColor: versionOneBackground,
+      confirmTextColor: Colors.white,
+      title: 'Sign In',
+      titleStyle: TextStyle(color: mastercamBlack25),
+      content: Text(
+        text,
+        style: TextStyle(color: mastercamBlack25),
+      ),
+      textConfirm: 'OK',
+      onConfirm: () => Get.back());
 }

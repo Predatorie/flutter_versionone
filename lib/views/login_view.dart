@@ -8,7 +8,7 @@ import 'package:flutter_versionone/ui_components/username_entry.dart';
 import 'package:get/get.dart';
 
 class LoginView extends GetView<LoginController> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
