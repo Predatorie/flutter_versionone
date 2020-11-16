@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_versionone/branding.dart';
 import 'package:flutter_versionone/controllers/login_controller.dart';
+import 'package:flutter_versionone/models/team.dart';
 import 'package:flutter_versionone/ui_components/form_vertical_spacing.dart';
 import 'package:flutter_versionone/ui_components/logo_graphics_header.dart';
 import 'package:flutter_versionone/ui_components/page_grdient.dart';
@@ -45,8 +46,17 @@ class LoginView extends GetView<LoginController> {
         backgroundColor: versionOneRed,
         onPressed: () async {
           var member = await controller.signIn(context);
-          if (member.isSuccess) {
+          if (member.success) {
             print('login successfull: ${member.value.email}');
+          } else {
+            await Get.defaultDialog(
+                onConfirm: () => Get.back(),
+                titleStyle: TextStyle(color: versionOneBackground),
+                middleTextStyle: TextStyle(color: versionOneBackground),
+                buttonColor: versionOneRed,
+                textConfirm: 'OK',
+                confirmTextColor: Colors.white,
+                middleText: '${member.errorMessage}');
           }
         },
         child: Icon(

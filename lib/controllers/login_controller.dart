@@ -39,40 +39,36 @@ class LoginController extends GetxController {
 
     /// validating here, validation on entry field not firing as expected.
     if (username.isEmpty) {
-      showMessage('Username required');
-      return null;
+      return Result<Member>(
+        success: false,
+        value: null,
+        errorMessage: 'Username required',
+      );
     }
 
     if (password.isEmpty) {
-      showMessage('Password required');
-      return null;
+      return Result<Member>(
+        success: false,
+        value: null,
+        errorMessage: 'Password required',
+      );
     }
-
-    print('username: $username password: $password');
 
     var member =
         await api.login(usernameController.text, passwordController.text);
 
     if (member != null) {
-      return Result<Member>(value: member);
+      return Result<Member>(
+        value: member,
+        success: true,
+        errorMessage: null,
+      );
     }
 
-    // TODO: Handle this later
-    showMessage('Failed to log in.\nPlease try again.');
-    return null;
+    return Result<Member>(
+      success: false,
+      value: null,
+      errorMessage: 'Failed to log in.\nPlease try again.',
+    );
   }
-
-  /// Alert dialog shown for any missing login credentials
-  void showMessage(String text) async => await Get.defaultDialog(
-      buttonColor: versionOneRed,
-      backgroundColor: versionOneBackground,
-      confirmTextColor: Colors.white,
-      title: 'Sign In',
-      titleStyle: TextStyle(color: mastercamBlack25),
-      content: Text(
-        text,
-        style: TextStyle(color: mastercamBlack25),
-      ),
-      textConfirm: 'OK',
-      onConfirm: () => Get.back());
 }

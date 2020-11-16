@@ -1,12 +1,13 @@
-class Result<T> {
-  T value;
-  bool isFailure;
-  bool isSuccess;
-  String errorMessage;
+import 'package:flutter/material.dart';
 
-  Result(
-      {this.value,
-      this.errorMessage,
-      this.isFailure = false,
-      this.isSuccess = true});
+class Result<T> {
+  final T value;
+  final bool success;
+  final String errorMessage;
+
+  Result({
+    @required this.value,
+    @required this.success,
+    @required this.errorMessage,
+  });
 }
